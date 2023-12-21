@@ -1,12 +1,20 @@
-:root{
-  --size-of-image: 300px;
+:root {
+  --size-of-image: 190px;
+  --bg-color: #fef9f0;
+  --font-family: "Inter", sans-serif;
+  --height-of-video: 950px;
+  --main-color: #4f3a29;
+  --secondary-color: #ffc936;
+  --primary-color: #d8ac88;
 }
 
-
 body {
-  font-family: "Inter", sans-serif;
-  background-color: #fef9f0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 #changeBackground {
@@ -26,29 +34,19 @@ body {
 }
 
 #charactersContainer {
-  max-width: 1116px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  display: flex; 
-  flex-direction: column;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr; */
-  gap: 50px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
 .character {
   display: flex;
-  align-items: center;
   gap: 20px;
-  width: calc(100%);
-}
-
-.character:nth-child(2) .character__text,
-.character:nth-child(3) .character__text,
-.character:nth-child(4) .character__text {
-  color: #fef9f0;
+  width: 100%;
 }
 
 #changeBackground:hover {
@@ -68,31 +66,55 @@ body {
   width: 200px;
   color: rgb(247, 117, 117);
 }
-
+.main__container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
 .main {
   z-index: 1;
   position: relative;
+  flex-grow: 1;
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
 }
 
 .main h1 {
   font-size: 30px;
   font-weight: 700;
   color: white;
-  margin-bottom: -20px;
+  margin-bottom: 20px;
 }
 
 video {
   z-index: 1;
-}
-
-.video {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+.video__wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  background: rgba(0, 0, 0, 0.1);
+ 
+}
+.video__wrapper {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video {
+  position: absolute;
+  max-height: var(--height-of-video);
+  height: 100%;
+  top: 0;
   z-index: -1;
   width: 101%;
-  height: 1080px;
 }
 
 .header {
@@ -101,12 +123,6 @@ video {
   color: #ffc936;
   font-size: 22px;
   font-family: "Neucha", cursive;
-}
-
-.main {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
 }
 
 .header input::placeholder {
@@ -142,19 +158,24 @@ video {
 }
 
 .character__text {
-  color: #4f3a29;
+  /* color: var(--primary-color); */
+  color: white;
+}
+.character:nth-child(n + 9) .character__text {
+  color: var(--main-color);
 }
 
 .character__text h2 {
   font-weight: 700;
-  font-size: 45px;
-  margin-bottom: 30px;
+  line-height: 100%;
+  font-size: 30px;
+  margin-bottom: 15px;
 }
 
 .character__text p {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 300;
-  line-height: 35px;
+  line-height: 100%;
 }
 
 .character__img img {
@@ -166,8 +187,8 @@ video {
 .character__img {
   background-color: #4f3a29;
   position: relative;
-  min-width: var(--size-of-image);;
-  height: var(--size-of-image);;
+  min-width: var(--size-of-image);
+  height: var(--size-of-image);
   transition: all 0.2s;
   position: relative;
 }
