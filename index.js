@@ -47,6 +47,7 @@ let characterImageLink;
 displayHeroes();
 
 function displayHeroes() {
+    charactersContainer.innerHTML = '';
     let newCharacter;
     let characterName;
     let characterDescription;
