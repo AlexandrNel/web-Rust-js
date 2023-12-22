@@ -1,6 +1,7 @@
 "use strict";
 
-let characters = [
+const avatars = ['hazmat-blue.gif', 'hazmat.gif', 'rust-rusty.gif', 'rust-spin.gif', 'rust-zoom.gif', 'scientist-idle-blue.gif', 'scientist-idle-red.gif', 'scientist-patrol-blue.gif', 'scientist-patrol-red.gif']
+const characters = [
     ['Строитель',
         'Не выпускает из рук киянку и почти не выходит из дома. Любит строить даже там, где нужно взрывать.',
         'https://thumb.tildacdn.com/tild3161-6331-4430-b836-366666613339/-/format/webp/_.png'
@@ -85,7 +86,9 @@ function addHero() {
     let noticeDescription = document.querySelector('.notice__desc');
 
     if (newUrlInput == 0) {
-        newUrlInput = './images/Animated-Avatars/rust-spin.gif'
+        
+            newUrlInput = `./images/Animated-Avatars/${avatars[Math.round(Math.random() * (avatars.length - 1))]}`
+        
     }
     if (newCharacterName == 0 & newCharacterClass == 0) {
         noticeName.style.display = 'block';
@@ -132,4 +135,3 @@ changeBackgroundBtn.addEventListener('click', function () {
     }
     video.setAttribute('src', `./images/Animated-Backgrounds/${videoSource[url]}.mp4`)
 })
-
