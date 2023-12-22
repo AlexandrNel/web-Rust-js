@@ -6,6 +6,9 @@
   --main-color: #4f3a29;
   --secondary-color: #ffc936;
   --primary-color: #d8ac88;
+  --main-container-width: 1200px;
+  --header-container-width: 1116px;
+  --container-padding: 0 20px;
 }
 
 body {
@@ -28,7 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -55,7 +58,8 @@ body {
 }
 
 .main__container {
-  max-width: 1200px;
+  max-width: var(--main-container-width);
+  padding: var(--container-padding);
   width: 100%;
   margin: 0 auto;
 }
@@ -127,7 +131,8 @@ video {
 }
 
 .header__container {
-  max-width: 1116px;
+  max-width: var(--header-container-width);
+  padding: var(--container-padding);
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -143,7 +148,8 @@ video {
 }
 
 #charactersContainer {
-  max-width: 1200px;
+  max-width: var(--main-container-width);
+  padding: var(--container-padding);
   width: 100%;
   margin: 0 auto;
 
