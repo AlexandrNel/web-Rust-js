@@ -1,74 +1,67 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Neucha&display=swap"
-    rel="stylesheet"
-    />
-    <title>Виды игроков в Rust</title>
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/media.css">
-  </head>
-  <body>
-    <div class="header">
-      <div class="header__container">
-        <!-- <label for="url"> -->
-        <input name="url" type="text" id="characterImage" placeholder="URL фото" />
-        <!-- <div class="notice notice__url" style="display: none">
-          <p>Введите ссылку на изображение</p>
-          </div> -->
-        <!-- </label> -->
-        <div>
-          <input
-            name="noticeName"
-            type="text"
-            id="characterName"
-            placeholder="Имя персонажа"
-          />
-          <div class="notice notice__name" style="display: none">
-            Напишите имя персонажа
-          </div>
-        </div>
-        <div>
-          <input
-            name="noticeDesc"
-            type="text"
-            id="characterDescription"
-            placeholder="Описание персонажа"
-          />
-          <div class="notice notice__desc" style="display: none">
-            Напишите описание персонажа
-          </div>
-        </div>
-        <button id="addButton">Добавить персонажа</button>
-      </div>
-    </div>
-    <div class="main">
-      <div class="video">
-        <div class="video__wrapper">
-          <button id="changeBackground">
-            <img src="./images/fig.svg" alt="" />
-          </button>
-          <video playsinline autoplay muted loop poster="#">
-            <source
-              src="./images/Animated-Backgrounds/oil-rig.mp4"
-              type="video/webm"
-            />
-          </video>
-        </div>
-      </div>
-      <div class="main__container">
-        <h1>Виды игроков в Rust</h1>
-      </div>
-      <div id="charactersContainer">
-      </div>
-    </div>
 
-    <script src="./index.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Neucha&display=swap"
+    rel="stylesheet" />
+  <title>Виды игроков в Rust</title>
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/media.css" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="header__container">
+      <div class="header__burger">
+        <div class="burger-lines">
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+        </div>
+      </div>
+      <ul class="header__inputs">
+        <li class="header__input"><input name="url" type="text" id="characterImage" placeholder="URL фото" /></li>
+        <li class="header__input"> <input name="noticeName" type="text" id="characterName"
+            placeholder="Имя персонажа" />
+          <div class="notice notice__name" style="display: none"><span>Напишите имя персонажа</span></div>
+        </li>
+        <li class="header__input"> <input name="noticeDesc" type="text" id="characterDescription"
+            placeholder="Описание персонажа" />
+          <div class="notice notice__desc" style="display: none"><span> Напишите описание персонажа</span></div>
+        </li>
+        <li class="header__input"><button id="addButton" class="button"><span>Добавить персонажа</span></button></li>
+        <li class="header__input"><button id="changeBackground-header" class="--changeBackground-rectangle button ">
+            <span>Сменить фон</span><img src="./images/fig.svg" alt="">
+          </button></li>
+      </ul>
+
+    </div>
+  </div>
+  </div>
+  <div class="main">
+    <div class="video">
+      <div class="video__wrapper">
+        <button id="changeBackground">
+          <img src="./images/fig.svg" alt="" />
+        </button>
+        <video playsinline autoplay muted loop poster="#">
+          <source src="./images/Animated-Backgrounds/oil-rig.mp4" type="video/webm" />
+        </video>
+      </div>
+    </div>
+    <div class="main__container">
+      <h1>Виды игроков в Rust</h1>
+    </div>
+    <div id="charactersContainer"></div>
+
+  </div>
+  <script src="./index.js"></script>
+</body>
+
 </html>
