@@ -10,7 +10,20 @@
   --header-container-width: 1116px;
   --container-padding: 0 20px;
 }
-
+.header__inputs {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  transition: all 0.3s;
+  z-index: 10;
+  background-color: rgba(79, 58, 41, 0.95);
+  width: 100%;
+}
+.header__inputs.opened {
+  transform: translateY(230px);
+  visibility: visible;
+  opacity: 1;
+}
 body {
   font-family: var(--font-family);
   background-color: var(--bg-color);
@@ -20,7 +33,42 @@ body {
   min-height: 100vh;
 }
 
-#changeBackground {
+.header__burger {
+  z-index: 50;
+  position: relative;
+  display: none;
+  justify-content: flex-end;
+}
+.burger-lines {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.burger-line {
+  width: 40px;
+  height: 3px;
+  background: var(--secondary-color);
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.burger-lines.active .burger-line:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.burger-lines.active .burger-line:nth-child(2) {
+  width: 0;
+}
+.burger-lines.active .burger-line:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+#changeBackground,
+#changeBackground-header {
   position: absolute;
   right: 50px;
   top: 50%;
@@ -37,6 +85,21 @@ body {
   border-radius: 50%;
   background: #ffc936;
   transition: opacity 0.3s, scale 0.1s;
+}
+
+#changeBackground-header.--changeBackground-rectangle {
+  background-color: var(--secondary-color);
+  display: none;
+  height: 50px;
+  max-width: 200px;
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: var(--main-color);
+
+  position: static;
+  transform: none;
+  gap: 10px;
 }
 
 #changeBackground:hover {
@@ -125,6 +188,7 @@ video {
 }
 
 .header input {
+  width: 100%;
   font-size: 18px;
   padding-bottom: 3px;
   border-bottom: 1px solid white;
@@ -135,16 +199,36 @@ video {
   padding: var(--container-padding);
   width: 100%;
   margin: 0 auto;
+  position: relative;
   display: flex;
-  gap: 40px;
+  justify-content: end;
 }
 
+.header .button {
+  background-color: var(--secondary-color);
+  height: 50px;
+  max-width: 200px;
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: var(--main-color);
+  transition: opacity 0.3s, scale 0.3s;
+}
+
+.header .button:hover {
+  opacity: 0.7;
+}
+
+.header .button:active {
+  scale: 0.9;
+}
 #addButton {
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
 }
-
-#addButton:hover {
-  color: #ffc93680;
+#addButton img {
+  width: 40px;
 }
 
 #charactersContainer {
