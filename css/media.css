@@ -74,6 +74,17 @@
     --size-of-image: 180px;
     --height-of-video: 900px;
   }
+  .header{
+    height: 69px;;
+  }
+  .header__container{
+    position: fixed;
+    background: var(--main-color);
+    height: 69px;
+    z-index: 101;
+    top: 0;
+    left: 0;
+  }
 
   .header__inputs {
     flex-direction: column;
@@ -84,6 +95,7 @@
     top: -250px;
     padding: 20px;
     justify-content: center;
+    padding-top: 50px;
   }
   .header__input{
     width: 50%;

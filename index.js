@@ -114,8 +114,11 @@ function addHero() {
         nameInput.value = '';
         classInput.value = '';
         urlInput.value = '';
-    }
+        if (mobileWidthMediaQuery.matches && buttonBurgerMenu.classList.contains('active')){
+            openAndCloseBurgerMenu();
+        }
 }
+    }
 
 const addButton = document.getElementById('addButton');
 addButton.addEventListener('click', addHero);
@@ -142,16 +145,18 @@ changeBackgroundBtnHeader.addEventListener('click', function () {
 })
 
 const buttonBurgerMenu = document.querySelector('.burger-lines');
-buttonBurgerMenu.addEventListener('click', () => {
+
+function openAndCloseBurgerMenu () {
     document.querySelector('.header__inputs').classList.toggle('opened');
-    buttonBurgerMenu.classList.toggle('active');
+    buttonBurgerMenu.classList.toggle('active');}
+    
+buttonBurgerMenu.addEventListener('click', () => {
+    openAndCloseBurgerMenu();
 })
 
 const mobileWidthMediaQuery = window.matchMedia('(max-width: 768px)')
-console.log(mobileWidthMediaQuery)
 mobileWidthMediaQuery.addEventListener('change', function (event) {
     if (!event.matches && buttonBurgerMenu.classList.contains('active')){
-        document.querySelector('.header__inputs').classList.toggle('opened');
-        buttonBurgerMenu.classList.toggle('active');
+        openAndCloseBurgerMenu();
     }
   })
