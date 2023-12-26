@@ -23,7 +23,7 @@
 @media screen and (max-width: 1024px) {
   :root {
     --size-of-image: 160px;
-    --height-of-video: 900px;
+    --height-of-video: 860px;
   }
   .character__text h2 {
     font-weight: 700;
