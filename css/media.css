@@ -95,7 +95,9 @@
     top: 0;
     left: 0;
   }
-
+  .header__input.buttons {
+    display: block;
+  }
   .header__inputs {
     flex-direction: column;
     visibility: hidden;
@@ -106,9 +108,17 @@
     padding: 20px;
     justify-content: center;
     padding-top: 50px;
+    gap: 5px;
+    align-items: center;
   }
   .header__input{
     width: 50%;
+  }
+  .header__input:nth-child(3){
+    margin-bottom: 20px;
+  }
+  .header__input:nth-child(1), .header__input:nth-child(2){
+    margin-bottom: 10px;
   }
   .header__burger {
     display: flex;
@@ -137,6 +147,9 @@
   }
   #changeBackground-header.--changeBackground-rectangle img{
     width: 20px;
+  }
+  .header .button{
+    font-size: 20px;
   }
 }
 @media screen and (max-width: 658px) {
