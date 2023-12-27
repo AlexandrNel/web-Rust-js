@@ -175,7 +175,7 @@ audio.addEventListener('ended', function(){
 
 let g = 0;
 function changeBackgroundMusic() {
-    if(g === soundtracks.length) {
+    if(g === soundtracks.length - 1) {
       g = 0;
     }
     audio.src = `${soundtracks[g]}`;
@@ -202,6 +202,7 @@ function changeBackgroundMusic() {
         console.log(audio.volume)
     } 
   }
+  g = Math.floor(Math.random() * (soundtracks.length - 1))
   playMusic();
   audio.volume = 0;
   const iconUnmute = document.querySelector('.unmuted')
