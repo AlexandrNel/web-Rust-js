@@ -8,7 +8,7 @@
 }
 @media screen and (max-width: 1374px) {
   :root {
-    --height-of-video: 1020px;
+    --height-of-video: 960px;
   }
   #charactersContainer {
     margin: 0;
@@ -17,6 +17,16 @@
   }
   #changeBackground {
     right: 20px;
+  }
+}
+@media screen and (max-width: 1069px) {
+  :root {
+    --height-of-video: 995px;
+  }
+}
+@media screen and (max-width: 1043px) {
+  :root {
+    --height-of-video: 1040px;
   }
 }
 
