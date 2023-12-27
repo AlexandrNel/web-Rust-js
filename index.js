@@ -160,3 +160,6 @@ mobileWidthMediaQuery.addEventListener('change', function (event) {
         openAndCloseBurgerMenu();
     }
   })
+
+//   Slider
+
