@@ -114,11 +114,11 @@ function addHero() {
         nameInput.value = '';
         classInput.value = '';
         urlInput.value = '';
-        if (mobileWidthMediaQuery.matches && buttonBurgerMenu.classList.contains('active')){
+        if (mobileWidthMediaQuery.matches && buttonBurgerMenu.classList.contains('active')) {
             openAndCloseBurgerMenu();
         }
-}
     }
+}
 
 const addButton = document.getElementById('addButton');
 addButton.addEventListener('click', addHero);
@@ -146,17 +146,82 @@ changeBackgroundBtnHeader.addEventListener('click', function () {
 
 const buttonBurgerMenu = document.querySelector('.burger-lines');
 
-function openAndCloseBurgerMenu () {
+function openAndCloseBurgerMenu() {
     document.querySelector('.header__inputs').classList.toggle('opened');
-    buttonBurgerMenu.classList.toggle('active');}
-    
+    buttonBurgerMenu.classList.toggle('active');
+}
+
 buttonBurgerMenu.addEventListener('click', () => {
     openAndCloseBurgerMenu();
 })
 
 const mobileWidthMediaQuery = window.matchMedia('(max-width: 768px)')
 mobileWidthMediaQuery.addEventListener('change', function (event) {
-    if (!event.matches && buttonBurgerMenu.classList.contains('active')){
+    if (!event.matches && buttonBurgerMenu.classList.contains('active')) {
         openAndCloseBurgerMenu();
     }
+})
+
+const audio = document.querySelector('audio')
+const soundtracks = ['mp3/01 - Rust - Safe Zone.mp3', 'mp3/02 - Rust - Descent.mp3', 'mp3/03 - Rust - Umbra.mp3', 'mp3/04 - Rust - Closed Circuit.mp3', 'mp3/05 - Rust - Fissure.mp3', 'mp3/06 - Rust - Spaces.mp3', 'mp3/07 - Rust - Legacy.mp3', 'mp3/08 - Rust - Summit.mp3', 'mp3/09 - Rust - Stranded.mp3', 'mp3/10 - Rust - Crest.mp3', 'mp3/11 - Rust - Repose.mp3', 'mp3/12 - Rust - Companion.mp3', 'mp3/13 - Rust - Armored.mp3', 'mp3/14 - Rust - Questions.mp3', 'mp3/15 - Rust - Controller.mp3', 'mp3/16 - Rust - Sunny.mp3', 'mp3/17 - Rust - Calm.mp3', 'mp3/18 - Rust - Bask.mp3', 'mp3/19 - Rust - Wastes.mp3', 'mp3/20 - Rust - Thunder.mp3', 'mp3/21 - Rust - Drop Point.mp3', 'mp3/22 - Rust - Decay.mp3', 'mp3/23 - Rust - Dust.mp3', 'mp3/24 - Rust - Excavator Theme.mp3', 'mp3/25 - Rust - Rev.mp3', 'mp3/26 - Rust - Oil Rig.mp3', 'mp3/27 - Rust - Work Cart.mp3', 'mp3/28 - Rust - Halcyon.mp3', 'mp3/29 - Rust - Windswept.mp3'];
+
+
+
+// Автоматическое воспроизведение музыки
+audio.addEventListener('ended', function(){
+    changeBackgroundMusic();
+    playMusic();
+})
+
+let g = 0;
+function changeBackgroundMusic() {
+    if(g === soundtracks.length) {
+      g = 0;
+    }
+    audio.src = `${soundtracks[g]}`;
+    g++;
+  };
+  
+  let playMusic = function() {
+    audio.src = `${soundtracks[g]}`;
+    audio.autoplay = true;
+    audio.volume = 0.1;
+  }
+  function isMuted(){
+    if (audio.volume === 0){
+        audio.volume = 0.1;
+        iconMute.setAttribute('hidden', '')
+        iconUnmute.removeAttribute('hidden', '')
+        if (audio.paused)audio.play();
+        console.log('Unmuted')
+    } else if(audio.volume > 0){
+        audio.volume = 0;
+        iconUnmute.setAttribute('hidden', '')
+        iconMute.removeAttribute('hidden', '')
+        console.log('muted')
+        console.log(audio.volume)
+    } 
+  }
+  playMusic();
+  audio.volume = 0;
+  const iconUnmute = document.querySelector('.unmuted')
+  const iconMute = document.querySelector('.muted')
+  const buttonMute = document.getElementById('unmute')
+  const buttonNextMusic = document.getElementById('changeMusic')
+  
+  buttonMute.addEventListener('click', function() {
+    isMuted();
+  });
+
+  buttonNextMusic.addEventListener('click', function(){
+    changeBackgroundMusic();
+    playMusic();
+    if (audio.volume !== 0){
+        iconMute.setAttribute('hidden', '')
+        iconUnmute.removeAttribute('hidden', '')
+    }
   })
+
+
+
+  
