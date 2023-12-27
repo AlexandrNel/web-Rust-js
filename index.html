@@ -47,9 +47,19 @@
             placeholder="Описание персонажа" />
           <div class="notice notice__desc" style="display: none"><span> Напишите описание персонажа</span></div>
         </li>
-        <li class="header__input"><button id="addButton" class="button"><span>Добавить персонажа</span></button></li>
+        <li class="header__input buttons">
+          <button id="addButton" class="button">Добавить персонажа</button>
+          <div class="buttons-music">
+            <button id="unmute" class="button --button-small">
+              <img class="muted"  src="./images/sound-icons/sound-mute-alt-svgrepo-com.svg" alt="Выключить звук">
+              <img class="unmuted" hidden src="./images/sound-icons/sound-min-svgrepo-com.svg" alt="Включить звук">
+            </button>
+            <button id="changeMusic" class="button --button-small"><img src="./images/sound-icons/next-svgrepo-com.svg" alt="Сменить саундтрэк">
+            </button>
+          </div>
+        </li>
         <li class="header__input"><button id="changeBackground-header" class="--changeBackground-rectangle button ">
-            <span>Сменить фон</span><img src="./images/fig.svg" alt="">
+            Сменить фон<img src="./images/fig.svg" alt="">
           </button></li>
       </ul>
 
@@ -62,7 +72,7 @@
         <button id="changeBackground">
           <img src="./images/fig.svg" alt="" />
         </button>
-        <video playsinline autoplay muted loop poster="#">
+        <video pip='false' playsinline autoplay muted loop poster="#">
           <source src="./images/Animated-Backgrounds/oil-rig.mp4" type="video/webm" />
         </video>
       </div>
@@ -73,6 +83,8 @@
     <div id="charactersContainer"></div>
 
   </div>
+
+  <audio></audio>
   <script src="./index.js"></script>
 </body>
 
