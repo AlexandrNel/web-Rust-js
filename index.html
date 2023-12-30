@@ -7,15 +7,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="./images/icons-rust.svg" type="image/svg">
-  <link type="image/png" sizes="16x16" rel="icon" href="./images/Web/icons-rust-doodle-16.png">
-  <link type="image/png" sizes="32x32" rel="icon" href="./images/Web/icons-rust-doodle-32.png">
-  <link type="image/png" sizes="96x96" rel="icon" href="./images/Web/icons-rust-doodle-96.png">
-  <link type="image/png" sizes="120x120" rel="icon" href="./images/Web/icons-rust-doodle-120.png">
-  <link rel="icon" type="image/png" sizes="72x72" href="./images/Android Chrome/icons-rust-doodle-72.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="./images/Android Chrome/icons-rust-doodle-96.png">
-  <link rel="icon" type="image/png" sizes="144x144" href="./images/Android Chrome/icons-rust-doodle-144.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="./images/Android Chrome/icons-rust-doodle-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="./images/Android Chrome/icons-rust-doodle-512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -38,11 +29,10 @@
         </div>
       </div>
       <ul class="header__inputs">
-        <li class="header__input"><input name="url" type="text" id="characterImage" placeholder="URL фото" /></li>
-        <li class="header__input"> <input name="noticeName" type="text" id="characterName"
-            placeholder="Имя персонажа" />
-          <div class="notice notice__name" style="display: none"><span>Напишите имя персонажа</span></div>
-        </li>
+        <label for="url" class="header__input"><input name="url" type="text" id="characterImage" placeholder="URL фото" /></label>
+        <label for="noticeName" class="header__input"><input name="noticeName" type="text" id="characterName" placeholder="Имя персонажа" />
+          <div class="notice notice__name" style="display: none">Напишите имя персонажа</div>
+        </label>
         <li class="header__input"> <input name="noticeDesc" type="text" id="characterDescription"
             placeholder="Описание персонажа" />
           <div class="notice notice__desc" style="display: none"><span> Напишите описание персонажа</span></div>
