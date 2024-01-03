@@ -10,7 +10,13 @@
   --header-container-width: 1116px;
   --container-padding: 0 20px;
 }
-.header__inputs {
+#addCharacter {
+  display: flex;
+  gap: 25px;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.header__form {
   display: flex;
   align-items: flex-start;
   gap: 40px;
@@ -19,7 +25,10 @@
   background-color: rgba(79, 58, 41, 0.95);
   width: 100%;
 }
-.header__inputs.opened {
+.header__inputs{
+  display: flex;
+}
+.header__form.opened {
   transform: translateY(230px);
   visibility: visible;
   opacity: 1;
@@ -207,7 +216,9 @@ video {
   display: flex;
   justify-content: end;
 }
-
+#addButton:disabled {
+  opacity: 0.6;
+} 
 .header .button {
   background-color: var(--secondary-color);
   height: 50px;

@@ -1,6 +1,34 @@
 "use strict";
 
+// Переменная с почтой
+const studentEmail = 'vipman2005@mail.ru'
+
+// Переменная для хранения данных от сервера 
+let cards;
+
+// Получение элементов формы
+const form = document.forms.addCharacter;
+const imageInput = form.elements.characterImage;
+const nameInput = form.elements.characterName;
+const descriptionInput = form.elements.characterDescription;
+
+//При полной загрузке
+fetch(
+    `https://api-code.practicum-team.ru/heroes?_where[_or][0][studentEmail]=${studentEmail}&_where[_or][1][studentEmail]=`
+)
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data); // В консоли можно исследовать полученные данные
+        cards = data; // Записываем данные в переменную
+        displayHeroes(cards); // Функция отрисовки полученных данных
+    })
+    .catch((error) => console.error("Ошибка:", error));
+
+
+// Массив с аватарками
 const avatars = ['hazmat-blue.gif', 'hazmat.gif', 'rust-rusty.gif', 'rust-spin.gif', 'rust-zoom.gif', 'scientist-idle-blue.gif', 'scientist-idle-red.gif', 'scientist-patrol-blue.gif', 'scientist-patrol-red.gif']
+
+// Объект с начальными персонажами
 const characters = [
     {
         name: 'Строитель',
@@ -44,7 +72,7 @@ const characters = [
     }
 ];
 
-
+// Функция отображения пресонажей
 displayHeroes();
 
 function displayHeroes() {
@@ -69,6 +97,8 @@ function displayHeroes() {
         charactersContainer.innerHTML += character;
     }
 }
+
+// Функция добавления нового персонажа
 
 function addHero() {
     let urlInput = document.getElementById("characterImage");
@@ -111,18 +141,17 @@ function addHero() {
         let newCharacter = { name: newCharacterName, description: newCharacterClass, url: newUrlInput };
         characters.push(newCharacter);
         displayHeroes();
-        nameInput.value = '';
-        classInput.value = '';
-        urlInput.value = '';
         if (mobileWidthMediaQuery.matches && buttonBurgerMenu.classList.contains('active')) {
             openAndCloseBurgerMenu();
         }
     }
 }
 
+// Получили кнопку добавления персонажа в переменную
 const addButton = document.getElementById('addButton');
 addButton.addEventListener('click', addHero);
 
+// Массив с названиями фонов
 const videoSource = ['oil-rig', 'dome-monument-landscape', 'forest-night', 'scientists']
 const video = document.querySelector('video')
 let url = 0;
@@ -146,8 +175,9 @@ changeBackgroundBtnHeader.addEventListener('click', function () {
 
 const buttonBurgerMenu = document.querySelector('.burger-lines');
 
+// Функция открытия и закрытия мобильного меню
 function openAndCloseBurgerMenu() {
-    document.querySelector('.header__inputs').classList.toggle('opened');
+    document.querySelector('.header__form').classList.toggle('opened');
     buttonBurgerMenu.classList.toggle('active');
 }
 
@@ -168,61 +198,95 @@ const soundtracks = ['mp3/01 - Rust - Safe Zone.mp3', 'mp3/02 - Rust - Descent.m
 
 
 // Автоматическое воспроизведение музыки
-audio.addEventListener('ended', function(){
+audio.addEventListener('ended', function () {
     changeBackgroundMusic();
     playMusic();
 })
 
 let g = 0;
 function changeBackgroundMusic() {
-    if(g === soundtracks.length - 1) {
-      g = 0;
+    if (g === soundtracks.length - 1) {
+        g = 0;
     }
     audio.src = `${soundtracks[g]}`;
     g++;
-  };
-  
-  let playMusic = function() {
+};
+
+// Функция воспроизведения музыки
+let playMusic = function () {
     audio.src = `${soundtracks[g]}`;
     audio.autoplay = true;
     audio.volume = 0.1;
-  }
-  function isMuted(){
-    if (audio.volume === 0){
+}
+
+// Функция включающая или выключающая музыку, в зависимости от того, выключен звук или нет.
+function isMuted() {
+    if (audio.volume === 0) {
         audio.volume = 0.1;
         iconMute.setAttribute('hidden', '')
         iconUnmute.removeAttribute('hidden', '')
-        if (audio.paused)audio.play();
+        if (audio.paused) audio.play();
         console.log('Unmuted')
-    } else if(audio.volume > 0){
+    } else if (audio.volume > 0) {
         audio.volume = 0;
         iconUnmute.setAttribute('hidden', '')
         iconMute.removeAttribute('hidden', '')
         console.log('muted')
         console.log(audio.volume)
-    } 
-  }
-  g = Math.floor(Math.random() * (soundtracks.length - 1))
-  playMusic();
-  audio.volume = 0;
-  const iconUnmute = document.querySelector('.unmuted')
-  const iconMute = document.querySelector('.muted')
-  const buttonMute = document.getElementById('unmute')
-  const buttonNextMusic = document.getElementById('changeMusic')
-  
-  buttonMute.addEventListener('click', function() {
-    isMuted();
-  });
+    }
+}
+g = Math.floor(Math.random() * (soundtracks.length - 1))
+playMusic();
+audio.volume = 0;
+const iconUnmute = document.querySelector('.unmuted')
+const iconMute = document.querySelector('.muted')
+const buttonMute = document.getElementById('unmute')
+const buttonNextMusic = document.getElementById('changeMusic')
 
-  buttonNextMusic.addEventListener('click', function(){
+buttonMute.addEventListener('click', function () {
+    isMuted();
+});
+
+buttonNextMusic.addEventListener('click', function () {
     changeBackgroundMusic();
     playMusic();
-    if (audio.volume !== 0){
+    if (audio.volume !== 0) {
         iconMute.setAttribute('hidden', '')
         iconUnmute.removeAttribute('hidden', '')
     }
-  })
+})
 
 
+// Форма отправки данных о персонаже на сервер
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    addButton.disabled = true;
+    addButton.textContent = 'Отправляем данные...'
+    let newCharacter = {
+        image: imageInput.value,
+        name: nameInput.value,
+        description: descriptionInput.value,
+        studentEmail: studentEmail,
+    }
+    let newCharacterJSON = JSON.stringify(newCharacter);
+    console.log(newCharacterJSON);
+    fetch('https://api-code.practicum-team.ru/heroes', {
+        method: 'POST',
+        body: newCharacterJSON,
+        headers: { "Content-type": "application/json; charset=UTF-8", },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            form.reset();
+        })
+        .catch((e) => {
+            console.log('Произошла ошибка')
+        })
 
-  
+        .finally(() => {
+            addButton.disabled = false;
+            addButton.textContent = 'Добавить персонажа';
+        })
+})
+

@@ -47,7 +47,7 @@
     font-weight: 300;
     line-height: 100%;
   }
-  .header__inputs {
+  .header__form {
     gap: 25px;
   }
   .header__input:nth-child(3) {
@@ -98,7 +98,13 @@
   .header__input.buttons {
     display: block;
   }
-  .header__inputs {
+  #addCharacter {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+ 
+  .header__form{
     flex-direction: column;
     visibility: hidden;
     opacity: 0;
@@ -110,6 +116,9 @@
     padding-top: 50px;
     gap: 5px;
     align-items: center;
+  }
+  #addCharacter{
+    gap: 5px;
   }
   .header__input{
     width: 50%;

@@ -28,17 +28,25 @@
           <div class="burger-line"></div>
         </div>
       </div>
-      <ul class="header__inputs">
-        <label for="url" class="header__input"><input name="url" type="text" id="characterImage" placeholder="URL фото" /></label>
-        <label for="noticeName" class="header__input"><input name="noticeName" type="text" id="characterName" placeholder="Имя персонажа" />
-          <div class="notice notice__name" style="display: none">Напишите имя персонажа</div>
-        </label>
-        <li class="header__input"> <input name="noticeDesc" type="text" id="characterDescription"
-            placeholder="Описание персонажа" />
-          <div class="notice notice__desc" style="display: none"><span> Напишите описание персонажа</span></div>
-        </li>
-        <li class="header__input buttons">
+      <div class="header__form">
+      <form method="post" name="addCharacter" id="addCharacter">
+        <div class="header__input">
+          <input name="characterImage" type="text" id="characterImage" placeholder="URL фото" />
+          <label for="characterImage"></label>
+        </div>
+        <div class="header__input">
+          <input name="characterName" type="text" id="characterName" placeholder="Имя персонажа" />
+          <label for="characterName" class="notice notice__name" style="display: none">Придумайте имя персонажа</label>
+        </div>
+        <div class="header__input"> 
+          <input name="characterDescription" type="text" id="characterDescription" placeholder="Описание персонажа" />
+          <label for="characterDescription" class="notice notice__desc" style="display: none">Придумайте описание персонажа</label>
+        </div>
+        <div class="header__input">
           <button id="addButton" class="button">Добавить персонажа</button>
+        </div>
+      </form>
+        <div class="header__input buttons">
           <div class="buttons-music">
             <button id="unmute" class="button --button-small">
               <img class="muted"  src="./images/sound-icons/sound-mute-alt-svgrepo-com.svg" alt="Выключить звук">
@@ -47,12 +55,10 @@
             <button id="changeMusic" class="button --button-small"><img src="./images/sound-icons/next-svgrepo-com.svg" alt="Сменить саундтрэк">
             </button>
           </div>
-        </li>
-        <li class="header__input"><button id="changeBackground-header" class="--changeBackground-rectangle button ">
-            Сменить фон<img src="./images/fig.svg" alt="">
-          </button></li>
-      </ul>
-
+        </div>
+        <div class="header__input">
+          <button id="changeBackground-header" class="--changeBackground-rectangle button "><span>Сменить фон</span><img src="./images/fig.svg" alt=""></button></div>
+    </div>
     </div>
   </div>
   </div>
