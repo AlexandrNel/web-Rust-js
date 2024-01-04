@@ -219,18 +219,27 @@ let playMusic = function () {
     audio.volume = 0.1;
 }
 
+const equalizer = document.querySelector('.equalizer');
+function animationMusic(){
+    if (!equalizer.classList.contains('--animation-active')){
+        equalizer.classList.add('--animation-active');
+    }   else equalizer.classList.remove('--animation-active');
+}
+
 // Функция включающая или выключающая музыку, в зависимости от того, выключен звук или нет.
 function isMuted() {
     if (audio.volume === 0) {
         audio.volume = 0.1;
         iconMute.setAttribute('hidden', '')
         iconUnmute.removeAttribute('hidden', '')
+        animationMusic();
         if (audio.paused) audio.play();
-        console.log('Unmuted')
+        console.log('Unmuted');
     } else if (audio.volume > 0) {
         audio.volume = 0;
         iconUnmute.setAttribute('hidden', '')
         iconMute.removeAttribute('hidden', '')
+        animationMusic();
         console.log('muted')
         console.log(audio.volume)
     }
@@ -250,9 +259,11 @@ buttonMute.addEventListener('click', function () {
 buttonNextMusic.addEventListener('click', function () {
     changeBackgroundMusic();
     playMusic();
+    animationMusic();
     if (audio.volume !== 0) {
         iconMute.setAttribute('hidden', '')
         iconUnmute.removeAttribute('hidden', '')
+        equalizer.classList.add('--animation-active');
     }
 })
 
